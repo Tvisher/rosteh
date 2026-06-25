@@ -4,6 +4,10 @@ const juriSlider = new Swiper('.six-section__slider', {
     speed: 800,
     slidesPerView: 'auto',
     spaceBetween: 20,
+    navigation: {
+        nextEl: '.six-section__slider-wrapper .swiper-button-next',
+        prevEl: '.six-section__slider-wrapper .swiper-button-prev',
+    },
     on: {
         progress: function (swiper, progress) {
             // if (progress > 0 && progress != 1) {

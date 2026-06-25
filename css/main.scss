@@ -613,6 +613,7 @@ body {
 .slide {
   width: 440px;
   .slide__image {
+    user-select: none;
     width: 100%;
     height: 440px;
     padding: 0 20px;
@@ -688,4 +689,24 @@ body {
 .content-wrapper {
   width: 100%;
   overflow: hidden;
+}
+.swiper-button-prev {
+  left: -100px;
+}
+.swiper-button-next {
+  right: -100px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 54px;
+  height: 97px;
+  z-index: 13;
+  color: transparent;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  &::after {
+    display: none;
+  }
 }
