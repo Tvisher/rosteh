@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/12.2.0/swiper-bundle.css"
-        integrity="sha512-+p/C3kF2/y4nA7hr0Xe/Ac94nREBTaBIgi52bC+bhaTqD8636eLLA4IbusJaFZNPL/KJ0WIQAzAMJX6yWRSv6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Говорит Ростех</title>
+
+    <link rel="stylesheet" href="./css/swiper-bundle.css">
     <link rel="stylesheet" href="./css/main.min.css">
 </head>
 
@@ -38,6 +37,13 @@
                     <span>Будем</span>
                     <span>участвовать!</span>
                 </div>
+                <div class="flying-image-container">
+                    <div class="flying-image">
+                        <div class="flying-image__wrapper" data-depth="0.05">
+                            <img src="./img/speaker.png" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="second-section">
@@ -49,7 +55,7 @@
                         До старта прием заявок <br>
                         осталось
                     </div>
-                    <div class="timer-block">
+                    <div class="timer-block" data-date="17.08.2026">
                         <span>24</span>:<span>32</span>:<span>58</span>
                     </div>
                     <div class="second-section__text">
@@ -113,6 +119,14 @@
                     <span>Будем</span>
                     <span>участвовать!</span>
                 </div>
+
+                <div class="flying-image-container">
+                    <div class="flying-image">
+                        <div class="flying-image__wrapper">
+                            <img src="./img/robot-speaker.png" alt="">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="four-section">
@@ -123,22 +137,53 @@
                 <div class="nom-list">
                     <div class="nom-item">
                         Лучшая<br> газета
+                        <div class="ico"></div>
                     </div>
                     <div class="nom-item _green">
                         Лучший<br> журнал
+                        <div class="ico"></div>
                     </div>
                     <div class="nom-item">
                         Лучшая<br> трансформция
+                        <div class="ico"></div>
                     </div>
-                    <div class="nom-item _green">Лучший<br> спецвыпуск <span>(спецпроект)</span></div>
-                    <div class="nom-item _green">Лучшая<br> инфографика</div>
-                    <div class="nom-item">Лучшая<br> фотография</div>
-                    <div class="nom-item _green">Лучшая<br> обложка</div>
-                    <div class="nom-item">Лучшая<br> публикация</div>
-                    <div class="nom-item">Лучший<br> заголовок <span>(лучшие<br> заголовки)</span></div>
-                    <div class="nom-item _green">Лучшая<br> интеграция<br> Ростеха</div>
-                    <div class="nom-item">Лучший<br> автор</div>
-                    <div class="nom-item _green">Специальная<br> номинация<br> от экспертного<br> совета</div>
+                    <div class="nom-item _green">
+                        Лучший<br> спецвыпуск <span>(спецпроект)</span>
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item _green">
+                        Лучшая<br> инфографика
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item">
+                        Лучшая<br> фотография
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item _green">
+                        Лучшая<br> обложка
+                        <div class="ico"></div>
+
+                    </div>
+                    <div class="nom-item">
+                        Лучшая<br> публикация
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item">
+                        Лучший<br> заголовок <span>(лучшие<br> заголовки)</span>
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item _green">
+                        Лучшая<br> интеграция<br> Ростеха
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item">
+                        Лучший<br> автор
+                        <div class="ico"></div>
+                    </div>
+                    <div class="nom-item _green">
+                        Специальная<br> номинация<br> от экспертного<br> совета
+                        <div class="ico"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -270,10 +315,126 @@
                 </div>
             </div>
         </section>
+        <section class="seven-section">
+            <div class="container">
+                <div class="seven-section__title">
+                    Как подать <br>
+                    заявку
+                </div>
+                <div class="main-screen__subdescr">
+                    <span>Будем</span>
+                    <span>участвовать!</span>
+                </div>
+                <div class="seven-section__list">
+                    <div class="list-item">
+                        <div class="list-item__num">1</div>
+                        <div class="list-item__text">Выберите номинацию или номинации, в которых хотите участвовать.
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item__num">2</div>
+                        <div class="list-item__text">Заполните электронную заявку для каждой номинации и приложите
+                            к ней комплект конкурсных материалов согласно регламенту.</div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item__num">3</div>
+                        <div class="list-item__text">В случае попадания в список финалистов в номинациях «Лучшая
+                            газета», «Лучший журнал» и «Лучшая трансформация» – представьте проект на онлайн-защите.
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item__num"></div>
+                        <div class="list-item__text">Форма для подачи заявки и материалов будет доступна <br>
+                            <b>с 17 августа по 5 октября.</b>
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item__num"></div>
+                        <div class="list-item__text">Если участие уже планируется, можно заранее подтвердить
+                            намерение подать заявку <u>нажав на кнопку выше</u>. Это поможет
+                            оргкомитету подготовиться к оценке работ и сопровождению
+                            участников.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flying-image-container">
+                    <div class="flying-image">
+                        <div class="flying-image__wrapper">
+                            <img src="./img/robot-speaker-2.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="eight-section">
+            <div class="container">
+                <div class="eight-section__title">ЧАВО</div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-item__head">Кто может участвовать в конкурсе?</div>
+                        <div class="faq-item__body">К участию приглашаются сотрудники и подразделения Ростеха, которые
+                            обеспечивают выпуск печатных периодических корпоративных СМИ.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-item__head">Можно ли подать заявку сразу в несколько номинаций?</div>
+                        <div class="faq-item__body">К участию приглашаются сотрудники и подразделения Ростеха, которые
+                            обеспечивают выпуск печатных периодических корпоративных СМИ.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-item__head">Что такое конкурсный период?</div>
+                        <div class="faq-item__body">К участию приглашаются сотрудники и подразделения Ростеха, которые
+                            обеспечивают выпуск печатных периодических корпоративных СМИ.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-item__head">Можно ли подать на конкурс работу, опубликованную
+                            до начала конкурсного периода?</div>
+                        <div class="faq-item__body">К участию приглашаются сотрудники и подразделения Ростеха, которые
+                            обеспечивают выпуск печатных периодических корпоративных СМИ.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-item__head">Какую информацию должна содержать презентация?</div>
+                        <div class="faq-item__body">К участию приглашаются сотрудники и подразделения Ростеха, которые
+                            обеспечивают выпуск печатных периодических корпоративных СМИ.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="nine-section">
+            <div class="container">
+                <div class="nine-section__title">Контакты</div>
+                <div class="nine-section__content">
+                    <div class="nine-section__descr">С любыми вопросами о конкурсе вы можете обратиться в оргкомитет.
+                    </div>
+                    <div class="nine-section__info">
+                        <span>E-mail:</span>
+                        <a href="mailto:icontent@rostec.ru">icontent@rostec.ru</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <a href="#" class="footer__logo">
+                        <img src="./img/footer-logo.svg" alt="">
+                    </a>
+                    <a class="policy" href="#" target="_blank">Политика обработки данных</a>
+                </div>
+            </div>
+        </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/12.2.0/swiper-bundle.min.js"
-        integrity="sha512-VeToJJJ9E8DkS1MwKhMYZbr1e+yeH+zLPGJwwPNXJRVH9lXvhELOWH7heE5yDlTfuUuOieSYpKe2glpFoEfhsg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/parallax.js"></script>
     <script src="./js/main.js"></script>
 </body>
 
