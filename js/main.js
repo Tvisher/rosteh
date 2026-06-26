@@ -54,6 +54,17 @@ scenes.forEach(scene => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Функция для правильного склонения слов (русский язык)
+    // На вход принимает число и массив из трех вариантов слова
+    const declOfNum = (n, textForms) => {
+        n = Math.abs(n) % 100;
+        const n1 = n % 10;
+        if (n > 10 && n < 20) return textForms[2];
+        if (n1 > 1 && n1 < 5) return textForms[1];
+        if (n1 === 1) return textForms[0];
+        return textForms[2];
+    };
+
     // Находим все блоки таймеров на странице
     const timerBlocks = document.querySelectorAll('.timer-block');
 
@@ -62,56 +73,69 @@ document.addEventListener('DOMContentLoaded', () => {
         const dateString = timerBlock.getAttribute('data-date');
         if (!dateString) return;
 
-        // Парсим дату из формата "ДД.ММ.ГГГГ"
+        // Парсим дату
         const [day, month, year] = dateString.split('.');
-
-        // В JavaScript месяцы начинаются с 0, поэтому отнимаем 1 (month - 1)
         const targetDate = new Date(year, month - 1, day, 0, 0, 0).getTime();
 
-        // Находим все span внутри текущего блока
-        const spans = timerBlock.querySelectorAll('span');
+        // Находим все блоки .num внутри текущего таймера
+        const numBlocks = timerBlock.querySelectorAll('.num');
 
-        // Проверяем, что у нас ровно 3 тега span (часы, минуты, секунды)
-        if (spans.length !== 3) {
-            console.error('Неверная разметка таймера. Ожидается 3 тега <span>.');
+        // Проверяем, что в верстке ровно 3 блока .num
+        if (numBlocks.length !== 3) {
+            console.error('Неверная разметка: ожидается 3 блока .num');
             return;
         }
 
-        const hoursSpan = spans[0];
-        const minutesSpan = spans[1];
-        const secondsSpan = spans[2];
+        // Распределяем элементы: [0] - цифра, [1] - подпись
+        const daysNumSpan = numBlocks[0].querySelectorAll('span')[0];
+        const daysTextSpan = numBlocks[0].querySelectorAll('span')[1];
+
+        const hoursNumSpan = numBlocks[1].querySelectorAll('span')[0];
+        const hoursTextSpan = numBlocks[1].querySelectorAll('span')[1];
+
+        const minutesNumSpan = numBlocks[2].querySelectorAll('span')[0];
+        const minutesTextSpan = numBlocks[2].querySelectorAll('span')[1];
 
         let countdownInterval;
 
-        // Функция для пересчета и вывода времени
+        // Функция пересчета
         const updateTimer = () => {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            // Если время вышло, останавливаем таймер и выводим нули
+            // Если время вышло, ставим нули и дефолтные склонения
             if (distance <= 0) {
                 clearInterval(countdownInterval);
-                hoursSpan.textContent = '00';
-                minutesSpan.textContent = '00';
-                secondsSpan.textContent = '00';
+
+                daysNumSpan.textContent = '00';
+                daysTextSpan.textContent = 'дней';
+
+                hoursNumSpan.textContent = '00';
+                hoursTextSpan.textContent = 'часов';
+
+                minutesNumSpan.textContent = '00';
+                minutesTextSpan.textContent = 'минут';
                 return;
             }
 
-            // Считаем общее количество оставшихся часов, минут и секунд
-            const hours = Math.floor(distance / (1000 * 60 * 60));
+            // Считаем дни, часы, минуты
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Обновляем текст в span, добавляя ведущий ноль (09 вместо 9)
-            hoursSpan.textContent = String(hours).padStart(2, '0');
-            minutesSpan.textContent = String(minutes).padStart(2, '0');
-            secondsSpan.textContent = String(seconds).padStart(2, '0');
+            // Обновляем цифры (с ведущим нулем) и склонения слов
+            daysNumSpan.textContent = String(days).padStart(2, '0');
+            daysTextSpan.textContent = declOfNum(days, ['день', 'дня', 'дней']);
+
+            hoursNumSpan.textContent = String(hours).padStart(2, '0');
+            hoursTextSpan.textContent = declOfNum(hours, ['час', 'часа', 'часов']);
+
+            minutesNumSpan.textContent = String(minutes).padStart(2, '0');
+            minutesTextSpan.textContent = declOfNum(minutes, ['минута', 'минуты', 'минут']);
         };
 
-        // Запускаем обновление сразу, чтобы не было задержки при загрузке
+        // Запускаем сразу и вешаем интервал
         updateTimer();
-
-        // Запускаем интервал на каждую секунду
         countdownInterval = setInterval(updateTimer, 1000);
     });
 });

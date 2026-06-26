@@ -78,12 +78,12 @@ body {
 .main-screen {
   padding-top: 64px;
   padding-bottom: 100px;
-
+  position: relative;
   .flying-image-container {
     position: absolute;
     right: 50%;
     transform: translateX(125%);
-    bottom: 180px;
+    bottom: -220px;
     z-index: 2;
 
     .flying-image__wrapper {
@@ -263,12 +263,31 @@ body {
 .timer-block {
   color: #fff;
   text-align: center;
+  justify-content: center;
   font-size: 144px;
   font-style: normal;
   font-weight: 250;
   line-height: 85%;
   text-transform: uppercase;
   margin-bottom: 72px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 30px;
+
+  .num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .text {
+    font-size: 24px;
+    line-height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+  }
 }
 
 .second-section__text {
