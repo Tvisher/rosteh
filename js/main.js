@@ -54,8 +54,6 @@ scenes.forEach(scene => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Функция для правильного склонения слов (русский язык)
-    // На вход принимает число и массив из трех вариантов слова
     const declOfNum = (n, textForms) => {
         n = Math.abs(n) % 100;
         const n1 = n % 10;
@@ -65,28 +63,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return textForms[2];
     };
 
-    // Находим все блоки таймеров на странице
     const timerBlocks = document.querySelectorAll('.timer-block');
 
     timerBlocks.forEach(timerBlock => {
-        // Получаем дату из атрибута data-date
         const dateString = timerBlock.getAttribute('data-date');
         if (!dateString) return;
 
-        // Парсим дату
         const [day, month, year] = dateString.split('.');
         const targetDate = new Date(year, month - 1, day, 0, 0, 0).getTime();
 
-        // Находим все блоки .num внутри текущего таймера
         const numBlocks = timerBlock.querySelectorAll('.num');
 
-        // Проверяем, что в верстке ровно 3 блока .num
         if (numBlocks.length !== 3) {
             console.error('Неверная разметка: ожидается 3 блока .num');
             return;
         }
 
-        // Распределяем элементы: [0] - цифра, [1] - подпись
         const daysNumSpan = numBlocks[0].querySelectorAll('span')[0];
         const daysTextSpan = numBlocks[0].querySelectorAll('span')[1];
 
@@ -98,12 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let countdownInterval;
 
-        // Функция пересчета
         const updateTimer = () => {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
-            // Если время вышло, ставим нули и дефолтные склонения
             if (distance <= 0) {
                 clearInterval(countdownInterval);
 
@@ -118,12 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Считаем дни, часы, минуты
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 
-            // Обновляем цифры (с ведущим нулем) и склонения слов
             daysNumSpan.textContent = String(days).padStart(2, '0');
             daysTextSpan.textContent = declOfNum(days, ['день', 'дня', 'дней']);
 
@@ -134,8 +122,123 @@ document.addEventListener('DOMContentLoaded', () => {
             minutesTextSpan.textContent = declOfNum(minutes, ['минута', 'минуты', 'минут']);
         };
 
-        // Запускаем сразу и вешаем интервал
         updateTimer();
         countdownInterval = setInterval(updateTimer, 1000);
+    });
+});
+
+const menu = document.querySelector('.menu')
+const formModal = document.querySelector('.form-modal-wrapper')
+
+document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.closest('.header__menu-btn')) {
+        menu.classList.add('open')
+    }
+
+    if ((target.closest('.menu') && !target.closest('.menu__inner')) || target.closest('.menu__close')) {
+        menu.classList.remove('open')
+    }
+
+    if (target.closest('.menu-link')) {
+        menu.classList.remove('open')
+    }
+
+    if (target.closest('[data-form-modal]')) {
+        formModal.classList.add('show')
+    }
+
+    if ((target.closest('.form-modal-wrapper') && !target.closest('.form-modal')) || target.closest('.modal-close-btn')) {
+        formModal.classList.remove('show')
+    }
+
+})
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('participation-form');
+    const pubInput = document.getElementById('publicationName');
+    const entInput = document.getElementById('enterpriseName');
+    const checkboxes = document.querySelectorAll('input[name="category"]');
+    const errorDiv = document.getElementById('error-message');
+
+    let isFormSubmitted = false;
+
+    function validateForm() {
+        let errors = [];
+
+        const isPubEmpty = pubInput.value.trim() === '';
+        const isEntEmpty = entInput.value.trim() === '';
+
+        if (isPubEmpty || isEntEmpty) {
+            errors.push('Пожалуйста, заполните оба текстовых поля.');
+        }
+
+        const checkedCount = document.querySelectorAll('input[name="category"]:checked').length;
+        if (checkedCount === 0) {
+            errors.push('Пожалуйста, выберите хотя бы одну номинацию.');
+        }
+
+        if (errors.length > 0) {
+            errorDiv.style.color = '#d93025';
+            errorDiv.innerHTML = errors.join('<br>');
+            return false;
+        } else {
+            errorDiv.innerHTML = '';
+            return true;
+        }
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        isFormSubmitted = true;
+
+        if (validateForm()) {
+
+            const formData = $(form).serialize();
+
+            $.ajax({
+                url: '/api/submit-form',
+                type: 'POST',
+                data: formData,
+                beforeSend: function () {
+                    const $btn = $('.submit-btn');
+                    $btn.prop('disabled', true).css('opacity', '0.5');
+                    errorDiv.style.color = '#555';
+                    errorDiv.textContent = 'Отправка данных...';
+                },
+                success: function (response) {
+                    errorDiv.style.color = '#84cc16'; // Зеленый цвет
+                    errorDiv.textContent = 'Форма успешно отправлена!';
+                    form.reset();
+                    isFormSubmitted = false;
+                },
+                error: function (xhr, status, error) {
+                    errorDiv.style.color = '#d93025'; // Красный цвет
+                    errorDiv.textContent = 'Произошла ошибка при отправке. Попробуйте позже.';
+                    console.error('Ошибка AJAX:', error);
+                },
+                complete: function () {
+                    // Возвращаем кнопку в исходное состояние независимо от результата
+                    $('.submit-btn').prop('disabled', false).css('opacity', '1');
+                }
+            });
+        }
+    });
+
+    [pubInput, entInput].forEach(input => {
+        input.addEventListener('input', () => {
+            if (isFormSubmitted) {
+                validateForm();
+            }
+        });
+    });
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            if (isFormSubmitted) {
+                validateForm();
+            }
+        });
     });
 });

@@ -26,6 +26,41 @@
                 </div>
             </div>
         </header>
+        <div class="menu">
+            <div class="menu__inner">
+                <div class="container">
+                    <div class="menu__head">
+                        <div class="menu__logo">
+                            <img src="./img/menu-logo.svg" alt="">
+                        </div>
+                        <div class="menu__close"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_578_1754)">
+                                    <path
+                                        d="M53.9455 1.79618C55.3124 0.429348 57.5279 0.429349 58.8948 1.79618C60.2613 3.16304 60.2615 5.37865 58.8948 6.7454L35.3694 30.2708L58.8948 53.7962C60.2613 55.163 60.2614 57.3786 58.8948 58.7454C57.528 60.1121 55.3124 60.112 53.9455 58.7454L30.4201 35.22L6.89475 58.7454C5.52801 60.1121 3.31239 60.112 1.94554 58.7454C0.578755 57.3786 0.57872 55.163 1.94554 53.7962L25.4709 30.2708L1.94554 6.7454C0.578702 5.37857 0.578701 3.16302 1.94554 1.79618C3.31237 0.429349 5.52792 0.429348 6.89475 1.79618L30.4201 25.3216L53.9455 1.79618Z"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_578_1754">
+                                        <rect width="60" height="60" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="menu__links">
+                        <a href="#second-section" class="menu-link">О премии</a>
+                        <a href="#six-section" class="menu-link">Жюри</a>
+                        <a href="#third-section" class="menu-link">Кто может участвовать</a>
+                        <a href="#seven-section" class="menu-link">Как принять участие в конкурсе</a>
+                        <a href="#four-section" class="menu-link">Номинации</a>
+                        <a href="#eight-section" class="menu-link">Часть задаваемые вопросы</a>
+                        <a href="#five-section" class="menu-link">Календарь 2026</a>
+                        <a href="#nine-section" class="menu-link">Контакты</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="main-screen">
             <div class="container">
                 <div class="main-screen__descr">Конкурс корпоративных СМИ</div>
@@ -33,7 +68,7 @@
                     <span>Говорит</span>
                     <span>Ростех</span>
                 </div>
-                <div class="main-screen__subdescr">
+                <div class="main-screen__subdescr" data-form-modal>
                     <span>Будем</span>
                     <span>участвовать!</span>
                 </div>
@@ -46,7 +81,7 @@
                 </div>
             </div>
         </section>
-        <section class="second-section">
+        <section class="second-section" id="second-section">
             <div class="container">
                 <div class="second-section__title">О премии</div>
 
@@ -104,7 +139,7 @@
                 </div>
             </div>
         </section>
-        <section class="third-section">
+        <section class="third-section" id="third-section">
             <div class="container">
                 <div class="third-section__title">
                     Кто может <br>
@@ -126,7 +161,7 @@
                     </p>
                 </div>
 
-                <div class="main-screen__subdescr">
+                <div class="main-screen__subdescr" data-form-modal>
                     <span>Будем</span>
                     <span>участвовать!</span>
                 </div>
@@ -140,7 +175,7 @@
                 </div>
             </div>
         </section>
-        <section class="four-section">
+        <section class="four-section" id="four-section">
             <div class="container">
                 <div class="four-section__title">
                     Номинации
@@ -198,7 +233,7 @@
                 </div>
             </div>
         </section>
-        <section class="five-section">
+        <section class="five-section" id="five-section">
             <div class="container">
                 <div class="five-section__title">
                     <span>Календарь</span>
@@ -241,7 +276,7 @@
                 </div>
             </div>
         </section>
-        <section class="six-section">
+        <section class="six-section" id="six-section">
             <div class="container">
                 <div class="six-section__title">Жюри</div>
                 <div class="six-section__slider-wrapper">
@@ -326,13 +361,13 @@
                 </div>
             </div>
         </section>
-        <section class="seven-section">
+        <section class="seven-section" id="seven-section">
             <div class="container">
                 <div class="seven-section__title">
                     Как подать <br>
                     заявку
                 </div>
-                <div class="main-screen__subdescr">
+                <div class="main-screen__subdescr" data-form-modal>
                     <span>Будем</span>
                     <span>участвовать!</span>
                 </div>
@@ -382,7 +417,7 @@
                 </div>
             </div>
         </section>
-        <section class="eight-section">
+        <section class="eight-section" id="eight-section">
             <div class="container">
                 <div class="eight-section__title">ЧАВО</div>
                 <div class="faq-list">
@@ -419,7 +454,7 @@
                 </div>
             </div>
         </section>
-        <section class="nine-section">
+        <section class="nine-section" id="nine-section">
             <div class="container">
                 <div class="nine-section__title">Контакты</div>
                 <div class="nine-section__content">
@@ -442,6 +477,103 @@
                 </div>
             </div>
         </footer>
+
+        <div class="form-modal-wrapper">
+            <div class="form-modal">
+                <div class="form-modal-header">
+                    <h2>Будем участвовать!</h2>
+                    <button class="modal-close-btn" type="button" aria-label="Закрыть">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_578_1770)">
+                                <path
+                                    d="M53.9455 1.79618C55.3124 0.429348 57.5279 0.429349 58.8948 1.79618C60.2613 3.16304 60.2615 5.37865 58.8948 6.7454L35.3694 30.2708L58.8948 53.7962C60.2613 55.163 60.2614 57.3786 58.8948 58.7454C57.528 60.1121 55.3124 60.112 53.9455 58.7454L30.4201 35.22L6.89475 58.7454C5.52801 60.1121 3.31239 60.112 1.94554 58.7454C0.578755 57.3786 0.57872 55.163 1.94554 53.7962L25.4709 30.2708L1.94554 6.7454C0.578702 5.37857 0.578701 3.16302 1.94554 1.79618C3.31237 0.429349 5.52792 0.429348 6.89475 1.79618L30.4201 25.3216L53.9455 1.79618Z"
+                                    fill="#CCFF00" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_578_1770">
+                                    <rect width="60" height="60" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                    </button>
+                </div>
+
+                <form id="participation-form" novalidate>
+                    <div class="input-group">
+                        <input type="text" id="publicationName" name="publication" placeholder="Название издания">
+                        <input type="text" id="enterpriseName" name="enterprise" placeholder="Название предприятия">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="newspaper">
+                            <span class="checkmark"></span>
+                            Лучшая газета
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="magazine">
+                            <span class="checkmark"></span>
+                            Лучший журнал
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="transformation">
+                            <span class="checkmark"></span>
+                            Лучшая трансформация
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="special">
+                            <span class="checkmark"></span>
+                            Лучший спецвыпуск (спецпроект)
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="infographics">
+                            <span class="checkmark"></span>
+                            Лучшая инфографика
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="photography">
+                            <span class="checkmark"></span>
+                            Лучшая фотография
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="cover">
+                            <span class="checkmark"></span>
+                            Лучшая обложка
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="publication">
+                            <span class="checkmark"></span>
+                            Лучшая публикация
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="headline">
+                            <span class="checkmark"></span>
+                            Лучший заголовок (лучшие заголовки)
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="integration">
+                            <span class="checkmark"></span>
+                            Лучшая интеграция Ростеха
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="category" value="author">
+                            <span class="checkmark"></span>
+                            Лучший автор
+                        </label>
+                    </div>
+
+                    <div id="error-message" class="error-message"></div>
+
+                    <button type="submit" class="submit-btn">
+                        Отправить
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="./js/swiper-bundle.min.js"></script>
     <script src="./js/jquery.min.js"></script>
