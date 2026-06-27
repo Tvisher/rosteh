@@ -133,15 +133,15 @@ const formModal = document.querySelector('.form-modal-wrapper')
 document.addEventListener('click', (e) => {
     const target = e.target;
     if (target.closest('.header__menu-btn')) {
-        menu.classList.add('open')
+        menu.classList.add('show')
     }
 
     if ((target.closest('.menu') && !target.closest('.menu__inner')) || target.closest('.menu__close')) {
-        menu.classList.remove('open')
+        menu.classList.remove('show')
     }
 
     if (target.closest('.menu-link')) {
-        menu.classList.remove('open')
+        menu.classList.remove('show')
     }
 
     if (target.closest('[data-form-modal]')) {
@@ -152,7 +152,24 @@ document.addEventListener('click', (e) => {
         formModal.classList.remove('show')
     }
 
-})
+    if (target.closest('.nom-item')) {
+        const nomItem = target.closest('.nom-item');
+        const nomModal = nomItem.querySelector('.nom-modal');
+        nomModal.classList.add('show');
+    }
+
+    if (target.closest('.nom-modal') && !target.closest('.nom-modal__content')) {
+        target.closest('.nom-modal').classList.remove('show');
+    }
+
+});
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        const openedModal = document.querySelector('.show');
+        openedModal && openedModal.classList.remove('show')
+    }
+});
 
 
 document.addEventListener('DOMContentLoaded', function () {
