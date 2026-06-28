@@ -10,25 +10,13 @@ const juriSlider = new Swiper('.six-section__slider', {
     },
     on: {
         progress: function (swiper, progress) {
-            // if (progress > 0 && progress != 1) {
-            //     sliderWrapper.classList.add('move');
-            //     sliderWrapper.classList.remove('end')
-            // } else if (progress == 0) {
-            //     sliderWrapper.classList.remove('move')
-            // }
-            // else if (progress == 1) {
-            //     sliderWrapper.classList.add('end')
-            // }
-
             if (progress != 1) {
                 sliderWrapper.classList.remove('end')
                 sliderWrapper.classList.remove('move');
             } else {
                 sliderWrapper.classList.add('end')
                 sliderWrapper.classList.add('move');
-
             }
-
         }
     },
 });
@@ -211,9 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
         isFormSubmitted = true;
 
         if (validateForm()) {
-
             const formData = $(form).serialize();
-
             $.ajax({
                 url: '/api/submit-form',
                 type: 'POST',
@@ -225,18 +211,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     errorDiv.textContent = 'Отправка данных...';
                 },
                 success: function (response) {
-                    errorDiv.style.color = '#84cc16'; // Зеленый цвет
+                    errorDiv.style.color = '#84cc16';
                     errorDiv.textContent = 'Форма успешно отправлена!';
                     form.reset();
                     isFormSubmitted = false;
                 },
                 error: function (xhr, status, error) {
-                    errorDiv.style.color = '#d93025'; // Красный цвет
+                    errorDiv.style.color = '#d93025';
                     errorDiv.textContent = 'Произошла ошибка при отправке. Попробуйте позже.';
                     console.error('Ошибка AJAX:', error);
                 },
                 complete: function () {
-                    // Возвращаем кнопку в исходное состояние независимо от результата
+
                     $('.submit-btn').prop('disabled', false).css('opacity', '1');
                 }
             });
