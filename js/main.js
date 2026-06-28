@@ -158,7 +158,7 @@ document.addEventListener('click', (e) => {
         nomModal.classList.add('show');
     }
 
-    if (target.closest('.nom-modal') && !target.closest('.nom-modal__content')) {
+    if ((target.closest('.nom-modal') && !target.closest('.nom-modal__content')) || target.closest('.nom-modal__close')) {
         target.closest('.nom-modal').classList.remove('show');
     }
 

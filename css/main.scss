@@ -516,6 +516,9 @@ body {
     .color-line {
       background-color: #fff;
     }
+    .nom-modal__close svg path {
+      fill: #fff;
+    }
   }
   &:hover .nom-item__inner {
     transform: translateY(-0.1875rem);
@@ -532,6 +535,20 @@ body {
     background-size: contain;
     background-position: center;
   }
+}
+
+.nom-modal__close {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+  display: none;
 }
 
 .five-section {
@@ -1142,6 +1159,8 @@ body {
 }
 
 .menu {
+  overflow: auto;
+  overscroll-behavior: contain;
   position: fixed;
   z-index: 99;
   left: 0;
@@ -1196,6 +1215,15 @@ body {
   svg {
     width: 100%;
     height: 100%;
+  }
+}
+
+.menu__logo {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left center;
   }
 }
 
@@ -1397,6 +1425,7 @@ body {
 }
 
 .nom-modal__content {
+  position: relative;
   max-width: 36.25rem;
   width: 100%;
   padding: 2.5rem 2rem;
@@ -1717,6 +1746,26 @@ body {
   .flying-image__wrapper {
     transform: none !important;
   }
+
+  .menu__head {
+    padding: 0;
+    margin-bottom: 50px;
+  }
+  .menu__inner {
+    padding-top: 30px;
+    align-items: flex-start;
+  }
+  .menu__close {
+    width: 60px;
+    height: 60px;
+  }
+  .menu__logo {
+    height: 50px;
+  }
+
+  .menu__links {
+    padding: 0;
+  }
 }
 
 @media (max-width: 992px) {
@@ -1727,6 +1776,22 @@ body {
   .main-screen .flying-image-container {
     transform: none;
     right: 0;
+  }
+  .menu-link {
+    width: 100%;
+    text-align: right;
+  }
+  .menu__inner {
+    height: 100%;
+  }
+
+  .menu {
+    background: #5a5a5a;
+  }
+  .menu__links {
+    gap: 20px;
+    font-size: 28px;
+    line-height: 120%;
   }
 }
 
@@ -1763,7 +1828,9 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  .second-section::before,
+  .second-section::before {
+    display: none;
+  }
   .third-section::before,
   .four-section::before,
   .five-section::before,
@@ -1772,9 +1839,13 @@ body {
   .eight-section::before,
   .nine-section::before,
   .footer::before {
-    width: 420px;
+    width: 100%;
+    background-size: cover;
     font-size: 12px;
     line-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .third-section__title {
@@ -1826,7 +1897,7 @@ body {
   }
   .seven-section__title {
     text-align: center;
-    top: 60px;
+    top: 40px;
   }
   .seven-section .main-screen__subdescr {
     margin: 0 auto;
@@ -1883,7 +1954,7 @@ body {
     text-align: center;
   }
   .nom-item .nom-item__inner {
-    min-height: 200px;
+    min-height: 150px;
   }
   .four-section__title {
     margin-bottom: 40px;
@@ -1899,13 +1970,13 @@ body {
     line-height: 120%;
   }
   .second-section {
-    padding-top: 100px;
+    padding-top: 80px;
   }
   .second-section__subtitle {
     font-size: 24px;
   }
   .second-section__title {
-    top: 5vw;
+    top: 0;
   }
   .timer-block {
     margin-bottom: 30px;
@@ -1968,5 +2039,94 @@ body {
   }
   .nine-section {
     padding-bottom: 40px;
+  }
+  .header__menu-btn {
+    width: 49px;
+    gap: 7px;
+    span {
+      height: 5px;
+    }
+  }
+
+  .menu__logo {
+    height: 30px;
+  }
+  .menu__close {
+    height: 30px;
+    width: 30px;
+  }
+  .menu-link {
+    font-size: 22px;
+  }
+
+  .form-modal-wrapper {
+    padding: 10px;
+    padding-top: 20px;
+  }
+  .form-modal,
+  .nom-modal__content {
+    padding: 15px;
+  }
+  .modal-close-btn {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+  }
+  .form-modal-header {
+    margin-bottom: 20px;
+    h2 {
+      font-size: 26px;
+    }
+  }
+  .input-group input {
+    padding: 15px;
+    font-size: 18px;
+  }
+  .checkmark {
+    width: 24px;
+    height: 24px;
+  }
+  .custom-checkbox {
+    font-size: 22px;
+    line-height: 120%;
+  }
+  .submit-btn {
+    margin-left: auto;
+    font-size: 26px;
+  }
+  .second-section__text {
+    text-align: center;
+  }
+
+  .nom-modal {
+    padding: 10px;
+    padding-top: 20px;
+  }
+  .nom-modal__content {
+    text-align: initial;
+  }
+  .nom-modal__name {
+    font-size: 32px;
+    line-height: 120%;
+    margin-bottom: 20px;
+  }
+
+  .nom-modal__subtitle {
+    font-size: 28px;
+    line-height: 120%;
+  }
+  .nom-modal__list {
+    font-size: 16px;
+  }
+  .nom-modal__decr {
+    font-size: 18px;
+  }
+  .nom-modal__close {
+    display: block;
+    top: 15px;
+    right: 15px;
+  }
+  .nom-modal__name {
+    padding-right: 35px;
   }
 }
